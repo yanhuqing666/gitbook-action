@@ -754,7 +754,6 @@ if ${INPUT_GITBOOK_PDF} ; then
   fi
 fi
   
-fi
 if ${INPUT_GITBOOK_EPUB} ; then
   mkdir -p _book/${INPUT_GITBOOK_EPUB_DIR}
   gitbook epub ./  ./_book/${INPUT_GITBOOK_EPUB_DIR}/${INPUT_GITBOOK_EPUB_NAME}.epub
