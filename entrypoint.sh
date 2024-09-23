@@ -746,7 +746,7 @@ fi
 # gitbook pdf
 if ${INPUT_GITBOOK_PDF} ; then
   mkdir -p _book/${INPUT_GITBOOK_PDF_DIR}
-  gitbook pdf ./  ./_book/${INPUT_GITBOOK_PDF_DIR}/${INPUT_GITBOOK_PDF_NAME}.pdf
+  gitbook pdf ./  ./_book/${INPUT_GITBOOK_PDF_DIR}/${INPUT_GITBOOK_PDF_NAME}.pdf  --no-sandbox
   if [ $? -eq 0 ]; then
     print_info "Message:gitbook built pdf success"
   else
