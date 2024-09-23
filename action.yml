@@ -275,7 +275,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - "--no-sandbox"
+    - --no-sandbox
     - ${{ inputs.token }}
     - ${{ inputs.time_zone }}
     - ${{ inputs.git_name }}
