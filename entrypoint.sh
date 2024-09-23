@@ -756,6 +756,7 @@ fi
   
 if ${INPUT_GITBOOK_EPUB} ; then
   mkdir -p _book/${INPUT_GITBOOK_EPUB_DIR}
+  export QTWEBENGINE_DISABLE_SANDBOX=1
   gitbook epub ./  ./_book/${INPUT_GITBOOK_EPUB_DIR}/${INPUT_GITBOOK_EPUB_NAME}.epub
 fi
 if ${INPUT_GITBOOK_MOBI} ; then
