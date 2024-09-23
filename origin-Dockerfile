@@ -1,0 +1,37 @@
+FROM ubuntu:latest
+
+# Environment configuration
+ENV GITBOOK_VERSION4_LATEST="4.0.0-alpha.6" \
+    GITBOOK_VERSION3_LATEST="3.2.3"
+ENV DEBIAN_FRONTEND=noninteractive 
+# Install gitbook
+RUN apt-get update \
+  && apt-get install  --no-install-recommends --no-install-suggests  -y \
+    curl \
+    tar \ 
+    sudo \
+    git \
+    vim \
+    calibre \
+    fonts-roboto \
+    bzip2 \
+    ghostscript \
+    jpegoptim \
+    optipng \
+    ca-certificates \
+    fonts-noto-cjk \
+    ttf-mscorefonts-installer \
+    fonts-arphic-gbsn00lp \
+    xz-utils \
+  && curl -SLO "https://nodejs.org/dist/v13.10.1/node-v13.10.1-linux-x64.tar.xz" \
+  && tar -xJf node-v13.10.1-linux-x64.tar.xz -C /usr/local --strip-components=1 \
+  && rm node-v13.10.1-linux-x64.tar.xz \ 
+&& npm config set registry https://registry.npmmirror.com \
+&& npm install --global --legacy-peer-deps --force gitbook-cli \
+#&& gitbook fetch ${GITBOOK_VERSION4_LATEST} \
+&& gitbook fetch ${GITBOOK_VERSION3_LATEST} \
+&& npm install --global --force markdownlint-cli \
+&& npm install svgexport -g --unsafe-perm \
+  && npm cache clear --force \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/*
