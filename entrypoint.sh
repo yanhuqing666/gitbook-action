@@ -747,6 +747,13 @@ fi
 if ${INPUT_GITBOOK_PDF} ; then
   mkdir -p _book/${INPUT_GITBOOK_PDF_DIR}
   gitbook pdf ./  ./_book/${INPUT_GITBOOK_PDF_DIR}/${INPUT_GITBOOK_PDF_NAME}.pdf
+  if [ $? -eq 0 ]; then
+    print_info "Message:gitbook built pdf success"
+  else
+    echo $?
+  fi
+fi
+  
 fi
 if ${INPUT_GITBOOK_EPUB} ; then
   mkdir -p _book/${INPUT_GITBOOK_EPUB_DIR}
